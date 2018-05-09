@@ -1,0 +1,12 @@
+{
+  "name": "sims-play-with-shadow-dom",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": ["cucumber", "nodejs", "selenium", "webdriver", "webcomponent", "shadow", "dom", "polymer"],
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/cucumber/bin/cucumber-js"
+  },
+  "author": "",
+  "license": "ISC"
+}
