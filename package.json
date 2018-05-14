@@ -1,7 +1,7 @@
 {
-  "name": "sims-play-with-shadow-dom",
+  "name": "cucumber-webcomponent-poc",
   "version": "1.0.0",
-  "description": "",
+  "description": "PoC aboutg testing webcomponent based front apps using cucumberjs and selenium",
   "keywords": [
     "cucumber",
     "nodejs",
@@ -10,9 +10,9 @@
     "webcomponent",
     "shadow",
     "dom",
-    "polymer"
+    "polymer",
+    "node.js"
   ],
-  "main": "index.js",
   "scripts": {
     "test": "node node_modules/cucumber/bin/cucumber-js -r support -r step_definitions"
   },
