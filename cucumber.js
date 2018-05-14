@@ -13,7 +13,7 @@ module.exports = function () {
     let requestedProfiles = minimist(process.argv.slice(2)).p || minimist(process.argv.slice(2)).profile;
     let customizedProfile = baseProfiles;
 
-    if(typeof requestedProfiles == "string") {
+    if(typeof requestedProfiles === "string") {
         requestedProfiles = new Array(requestedProfiles);
     };
 
@@ -29,17 +29,7 @@ module.exports = function () {
             }
         }
     }
-    // if(baseProfiles[requestedProfile]) {
-    //     return baseProfiles;
-    // } else {
-    //     let configFilePath = path.resolve(requestedProfile);
-    //     try {
-    //         fs.accessSync(configFilePath, fs.constants.R_OK);
-    //         customizedProfile[requestedProfile] =  `--world-parameters '{"config": "${requestedProfile}"}'`
-    //     } catch (e) {
-    //         console.error(e)
-    //     }
-    // }
+
 
     return customizedProfile
 }();
