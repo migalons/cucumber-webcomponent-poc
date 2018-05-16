@@ -1,27 +1,28 @@
-const {Given, When, Then} = require("cucumber");
+const {Given, When, Then}  = require("cucumber");
+const poHome = require("../page_objects/home");
+const poList = require("../page_objects/list");
+const poDetail = require("../page_objects/detail");
+const poHeader = require("../page_objects/header");
 
-Given('a user at the polymer shopping app', function () {
-    return driver.url('https://shop.polymer-project.org/')
-        .waitForVisible("shop-app paper-icon-button[icon='shopping-cart']", config.timeouts.visible)
+Given('a user at the polymer shopping app', async function () {
+
+    await poHome.go();
 
 });
 
-When('he adds an item the the cart', function () {
-    return driver.waitForVisible("shop-app shop-home shop-button", 5000)
-        .click("shop-app shop-home shop-button")
-        .waitForVisible("shop-app shop-list shop-list-item shop-image", 5000)
-        .click("shop-app shop-list shop-list-item shop-image")
-        .waitForVisible("shop-app shop-detail button", 5000)
-        .click("shop-app shop-detail button")
+When('he adds an item the the cart', async function () {
+
+    await poHome.perform.click.button.shopNow();
+    await poList.perform.click.item.any();
+    await poDetail.perform.click.button.addtoShoppingCart();
+
 });
 
-Then('customer cart is updated', function () {
-    return driver.waitForVisible("shop-app div.cart-btn-container")
-        .getText("shop-app div.cart-btn-container").then((text) => {
-            if(text === "1") {
-                return Promise.resolve();
-            } else {
-                return Promise.reject("Error. Shopping cart is not propertly updated. Text: " + text);
-            }
-        });
+Then('customer cart is updated', async function () {
+
+    let number = await poHeader.get.shoppingCartItemsNumber();
+    if(number !== "1") {
+        throw("Error. Items expected: 1. Got items: " + number)
+    }
+
 });

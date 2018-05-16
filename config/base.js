@@ -14,9 +14,9 @@ exports.config = {
     },
     "logLevel": "error",
     "timeouts": {
-        "scenario": 40000,
-        "pageLoad": 15000,
-        "visible": 15000
+        "scenario": 10000,
+        "pageLoad": 5000,
+        "visible": 2000
     },
     "url": "https://shop.polymer-project.org/"
 };
